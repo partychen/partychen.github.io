@@ -1,5 +1,6 @@
 ### How to get a long period op token for api request.
 Use chrome to go to the [swagger site]( https://op-build-prod.azurewebsites.net/swagger/ui/index#/), open the **"Authorization"** tab and the **"POST /v1/Authorizations/github/basicauth"** tab as below pitcure. There are 3 parameters should be filled.
+
 ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
 ###### 1.X-OP-githubOtp: 
 it's the github two-factor code, if you enable the github two-factor, you should fill this, or you can skip it.
