@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Authentication Header Generator</title>
+<link rel="stylesheet" href="css/utils.css">
+</head>
+<body>
+<h1>Basic Authentication Header Generator</h1>
+<p>Generates a Basic Authentication Header.</p>
+<form>
+<fieldset>
+    <legend>Basic Authentication Header Generator</legend>
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text"/>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password"/>
+    <div id="result"></div>
+    <input id="btn" type="button" value="Generate Header"/>
+</fieldset>
+</form>
+<script>
+(function() {
+    var usernameField = document.getElementById('username');
+    var passwordField = document.getElementById('password');
+    var result = document.getElementById('result');
+    var btn = document.getElementById('btn');
+    btn.onclick = function() {
+        result.textContent = 'Authorization: Basic ' + btoa(usernameField.value + ':' + passwordField.value);
+        result.style.display = 'block';
+    };
+})();
+</script>
+</body>
+</html> 
