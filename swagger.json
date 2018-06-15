@@ -1,729 +1,1449 @@
-{
-  "swagger": "2.0",
-  "info": {
-    "x-ms-code-generation-settings": {
-      "name": "MonitorManagementClient"
-    },
-    "version": "2016-03-01",
-    "title": "MonitorManagementClient"
-  },
-  "host": "management.azure.com",
-  "basePath": "/v1",
-  "schemes": [
-    "https"
-  ],
-  "security": [
-    {
-      "azure_auth": [
-        "user_impersonation"
-      ]
-    }
-  ],
-  "securityDefinitions": {
-    "azure_auth": {
-      "type": "oauth2",
-      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
-      "flow": "implicit",
-      "description": "Azure Active Directory OAuth2 Flow",
-      "scopes": {
-        "user_impersonation": "impersonate your user account"
-      }
-    }
-  },
-  "paths": {
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}": {
-      "put": {
-        "description": "Creates or updates an alert rule.",
-        "tags": [
-          "AlertRules"
-        ],
-        "operationId": "AlertRules_CreateOrUpdate",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/RuleNameParameter"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "name": "parameters",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AlertRuleResource"
-            },
-            "description": "The parameters of the rule to create or update."
-          },
-          {
-            "$ref": "#/parameters/SubscriptionIdParameter"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResponse"
-            }
-          },
-          "200": {
-            "description": "Successful request to update an alert rule",
-            "schema": {
-              "$ref": "#/definitions/AlertRuleResource"
-            },
-            "examples": {
-              "application/json": {
-                "id": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/alertrules/chiricutin",
-                "name": "chiricutin",
-                "type": "Microsoft.Insights/alertRules",
-                "location": "West US",
-                "tags": {
-                  "$type": "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage",
-                  "hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest": "Resource"
-                },
-                "properties": {
-                  "name": "chiricutin",
-                  "description": "Pura Vida",
-                  "isEnabled": true,
-                  "condition": {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                    "dataSource": {
-                      "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                      "resourceUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest",
-                      "metricName": "Requests"
-                    },
-                    "operator": "GreaterThan",
-                    "threshold": 3,
-                    "windowSize": "PT5M",
-                    "timeAggregation": "Total"
-                  },
-                  "lastUpdatedTime": "2016-11-23T21:23:52.0221265Z",
-                  "actions": []
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created alert rule",
-            "schema": {
-              "$ref": "#/definitions/AlertRuleResource"
-            },
-            "examples": {
-              "application/json": {
-                "id": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/alertrules/chiricutin",
-                "name": "chiricutin",
-                "type": "Microsoft.Insights/alertRules",
-                "location": "West US",
-                "tags": {
-                  "$type": "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage",
-                  "hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest": "Resource"
-                },
-                "properties": {
-                  "name": "chiricutin",
-                  "description": "Pura Vida",
-                  "isEnabled": true,
-                  "condition": {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                    "dataSource": {
-                      "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                      "resourceUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest",
-                      "metricName": "Requests"
-                    },
-                    "operator": "GreaterThan",
-                    "threshold": 2,
-                    "windowSize": "PT5M",
-                    "timeAggregation": "Total"
-                  },
-                  "lastUpdatedTime": "2016-11-23T21:21:40.3097118Z",
-                  "actions": []
-                }
-              }
-            }
-          }
-        },
-        "x-ms-examples": {
-          "Create or update an alert rule": {
-            "parameters": {
-              "subscriptionId": "b67f7fec-69fc-4974-9099-a26bd6ffeda3",
-              "resourceGroupName": "Rac46PostSwapRG",
-              "ruleName": "chiricutin",
-              "api-version": "2016-03-01",
-              "parameters": {
-                "location": "West US",
-                "tags": {},
-                "properties": {
-                  "name": "chiricutin",
-                  "description": "Pura Vida",
-                  "isEnabled": true,
-                  "condition": {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                    "dataSource": {
-                      "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                      "resourceUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest",
-                      "metricName": "Requests"
-                    },
-                    "operator": "GreaterThan",
-                    "threshold": 3,
-                    "windowSize": "PT5M",
-                    "timeAggregation": "Total"
-                  },
-                  "lastUpdatedTime": "2016-11-23T21:23:52.0221265Z",
-                  "actions": []
-                }
-              }
-            },
-            "responses": {
-              "200": {
-                "headers": {},
-                "body": {
-                  "id": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/alertrules/chiricutin",
-                  "name": "chiricutin",
-                  "type": "Microsoft.Insights/alertRules",
-                  "location": "West US",
-                  "tags": {
-                    "$type": "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage",
-                    "hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest": "Resource"
-                  },
-                  "properties": {
-                    "name": "chiricutin",
-                    "description": "Pura Vida",
-                    "isEnabled": true,
-                    "condition": {
-                      "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                      "dataSource": {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest",
-                        "metricName": "Requests"
-                      },
-                      "operator": "GreaterThan",
-                      "threshold": 3,
-                      "windowSize": "PT5M",
-                      "timeAggregation": "Total"
-                    },
-                    "lastUpdatedTime": "2016-11-23T21:23:52.0221265Z",
-                    "actions": []
-                  }
-                }
-              },
-              "201": {
-                "headers": {},
-                "body": {
-                  "id": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/alertrules/chiricutin",
-                  "name": "chiricutin",
-                  "type": "Microsoft.Insights/alertRules",
-                  "location": "West US",
-                  "tags": {
-                    "$type": "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage",
-                    "hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest": "Resource"
-                  },
-                  "properties": {
-                    "name": "chiricutin",
-                    "description": "Pura Vida",
-                    "isEnabled": true,
-                    "condition": {
-                      "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                      "dataSource": {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest",
-                        "metricName": "Requests"
-                      },
-                      "operator": "GreaterThan",
-                      "threshold": 3,
-                      "windowSize": "PT5M",
-                      "timeAggregation": "Total"
-                    },
-                    "lastUpdatedTime": "2016-11-23T21:23:52.0221265Z",
-                    "actions": []
-                  }
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "x-internal-toc-name": "Create Or Update"
-      }
-    }
-  },
-  "definitions": {
-    "RuleCondition": {
-      "type": "object",
-      "discriminator": "odata.type",
-      "properties": {
-        "odata.type": {
-          "type": "string",
-          "description": "specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric)."
-        },
-        "dataSource": {
-          "$ref": "#/definitions/RuleDataSource",
-          "description": "the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource."
-        }
-      },
-      "required": [
-        "odata.type"
-      ],
-      "description": "The condition that results in the alert rule being activated."
-    },
-    "RuleDataSource": {
-      "type": "object",
-      "discriminator": "odata.type",
-      "properties": {
-        "odata.type": {
-          "type": "string",
-          "description": "specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource"
-        },
-        "resourceUri": {
-          "type": "string",
-          "description": "the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule."
-        }
-      },
-      "required": [
-        "odata.type"
-      ],
-      "description": "The resource from which the rule collects its data."
-    },
-    "RuleMetricDataSource": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleDataSource"
-        }
-      ],
-      "properties": {
-        "metricName": {
-          "type": "string",
-          "description": "the name of the metric that defines what the rule monitors."
-        }
-      },
-      "description": "A rule metric data source. The discriminator value is always RuleMetricDataSource in this case."
-    },
-    "RuleManagementEventClaimsDataSource": {
-      "properties": {
-        "emailAddress": {
-          "type": "string",
-          "description": "the email address."
-        }
-      },
-      "description": "The claims for a rule management event data source."
-    },
-    "RuleManagementEventDataSource": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleDataSource"
-        }
-      ],
-      "properties": {
-        "eventName": {
-          "type": "string",
-          "description": "the event name."
-        },
-        "eventSource": {
-          "type": "string",
-          "description": "the event source."
-        },
-        "level": {
-          "type": "string",
-          "description": "the level."
-        },
-        "operationName": {
-          "type": "string",
-          "description": "The name of the operation that should be checked for. If no name is provided, any operation will match."
-        },
-        "resourceGroupName": {
-          "type": "string",
-          "description": "the resource group name."
-        },
-        "resourceProviderName": {
-          "type": "string",
-          "description": "the resource provider name."
-        },
-        "status": {
-          "type": "string",
-          "description": "The status of the operation that should be checked for. If no status is provided, any status will match."
-        },
-        "subStatus": {
-          "type": "string",
-          "description": "the substatus."
-        },
-        "claims": {
-          "$ref": "#/definitions/RuleManagementEventClaimsDataSource",
-          "description": "the claims."
-        }
-      },
-      "description": "A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case."
-    },
-    "ConditionOperator": {
-      "type": "string",
-      "enum": [
-        "GreaterThan",
-        "GreaterThanOrEqual",
-        "LessThan",
-        "LessThanOrEqual"
-      ],
-      "x-ms-enum": {
-        "name": "ConditionOperator",
-        "modelAsString": false
-      },
-      "description": "Operators allowed in the rule condition."
-    },
-    "TimeAggregationOperator": {
-      "type": "string",
-      "enum": [
-        "Average",
-        "Minimum",
-        "Maximum",
-        "Total",
-        "Last"
-      ],
-      "x-ms-enum": {
-        "name": "TimeAggregationOperator",
-        "modelAsString": false
-      },
-      "description": "Aggregation operators allowed in a rule."
-    },
-    "ThresholdRuleCondition": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleCondition"
-        }
-      ],
-      "required": [
-        "threshold",
-        "operator"
-      ],
-      "properties": {
-        "operator": {
-          "$ref": "#/definitions/ConditionOperator",
-          "description": "the operator used to compare the data and the threshold."
-        },
-        "threshold": {
-          "type": "number",
-          "format": "double",
-          "description": "the threshold value that activates the alert."
-        },
-        "windowSize": {
-          "type": "string",
-          "format": "duration",
-          "description": "the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day."
-        },
-        "timeAggregation": {
-          "$ref": "#/definitions/TimeAggregationOperator",
-          "description": "the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric."
-        }
-      },
-      "description": "A rule condition based on a metric crossing a threshold.",
-      "example": "\"condition\": {\r\n\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition\",\r\n\t\"dataSource\": {\r\n\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\r\n\t\"resourceUri\":\r\n\t\"/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/resourceGroups/Default-Storage-NorthCentralUS/providers/Microsoft.Web/serverfarms/Plan\",\r\n\t\"metricName\": \"CpuPercentage\",\r\n\t\"operator\": \"GreaterThan\"\r\n\t},\r\n\t\"threshold\": 90,\r\n\t\"windowSize\": \"PT15M\",\r\n\t\"timeAggregation\": \"Average\"}"
-    },
-    "LocationThresholdRuleCondition": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleCondition"
-        }
-      ],
-      "properties": {
-        "windowSize": {
-          "type": "string",
-          "format": "duration",
-          "description": "the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day."
-        },
-        "failedLocationCount": {
-          "type": "integer",
-          "format": "int32",
-          "minimum": 0,
-          "description": "the number of locations that must fail to activate the alert."
-        }
-      },
-      "required": [
-        "failedLocationCount"
-      ],
-      "description": "A rule condition based on a certain number of locations failing.",
-      "example": "{\r\n\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition\",\r\n\t\"dataSource\": {\r\n\t\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\r\n\t\t\"resourceUri\": \"/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/resourcegroups/Default-Web-CentralUS/providers/microsoft.insights/webtests/homepagetest-newrelapp2\",r\n\t\t\"metricName\": \"GSMT_AvRaW\"\r\n\t},\r\n\t\"windowSize\": \"PT5M\",\r\n\t\"failedLocationCount\": 1\r\n}"
-    },
-    "ManagementEventAggregationCondition": {
-      "properties": {
-        "operator": {
-          "$ref": "#/definitions/ConditionOperator",
-          "description": "the condition operator."
-        },
-        "threshold": {
-          "type": "number",
-          "format": "double",
-          "description": "The threshold value that activates the alert."
-        },
-        "windowSize": {
-          "type": "string",
-          "format": "duration",
-          "description": "the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day."
-        }
-      },
-      "description": "How the data that is collected should be combined over time."
-    },
-    "ManagementEventRuleCondition": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleCondition"
-        }
-      ],
-      "properties": {
-        "aggregation": {
-          "$ref": "#/definitions/ManagementEventAggregationCondition",
-          "description": "How the data that is collected should be combined over time and when the alert is activated. Note that for management event alerts aggregation is optional – if it is not provided then any event will cause the alert to activate."
-        }
-      },
-      "description": "A management event rule condition.",
-      "example": "{\r\n\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition\",\r\n\t\"dataSource\": {\r\n\t\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource\",\r\n\t\t\"operationName\": \"\",\r\n\t\t\"resourceUri\": \"/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/resourceGroups/Default-Web-CentralUS/providers/Microsoft.Web/sites/TestLatestWebsite\",\r\n\t\t\"status\": \"failed\",\r\n\t\t\"claims\": { }\r\n\t},\r\n\t\"aggregation\": {\r\n\t\t\"threshold\": 1,\r\n\t\t\"windowSize\": \"PT5M\"\r\n\t}\r\n}"
-    },
-    "RuleAction": {
-      "type": "object",
-      "discriminator": "odata.type",
-      "properties": {
-        "odata.type": {
-          "type": "string",
-          "description": "specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction."
-        }
-      },
-      "required": [
-        "odata.type"
-      ],
-      "description": "The action that is performed when the alert rule becomes active, and when an alert condition is resolved."
-    },
-    "RuleEmailAction": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleAction"
-        }
-      ],
-      "properties": {
-        "sendToServiceOwners": {
-          "type": "boolean",
-          "description": "Whether the administrators (service and co-administrators) of the service should be notified when the alert is activated."
-        },
-        "customEmails": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "the list of administrator's custom email addresses to notify of the activation of the alert."
-        }
-      },
-      "description": "Specifies the action to send email when the rule condition is evaluated. The discriminator is always RuleEmailAction in this case.",
-      "example": "{\r\n\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.RuleEmailAction\",\r\n\t\"sendToServiceOwners\": true,\r\n\t\"customEmails\": [\"email1@contoso.com\",\"email2@contoso.com\" ]\r\n}"
-    },
-    "RuleWebhookAction": {
-      "x-ms-discriminator-value": "Microsoft.Azure.Management.Insights.Models.RuleWebhookAction",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/RuleAction"
-        }
-      ],
-      "properties": {
-        "serviceUri": {
-          "type": "string",
-          "description": "the service uri to Post the notification when the alert activates or resolves."
-        },
-        "properties": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload."
-        }
-      },
-      "description": "Specifies the action to post to service when the rule condition is evaluated. The discriminator is always RuleWebhookAction in this case.",
-      "example": "{\r\n\t\"odata.type\": \"Microsoft.Azure.Management.Insights.Models.RuleWebhookAction\",\r\n\t\"serviceUri\": \"http://contoso.com/\",\r\n\t\"properties\": { }\r\n}"
-    },
-    "AlertRule": {
-      "required": [
-        "name",
-        "isEnabled",
-        "condition"
-      ],
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "the name of the alert rule."
-        },
-        "description": {
-          "type": "string",
-          "description": "the description of the alert rule that will be included in the alert email."
-        },
-        "isEnabled": {
-          "type": "boolean",
-          "description": "the flag that indicates whether the alert rule is enabled."
-        },
-        "condition": {
-          "$ref": "#/definitions/RuleCondition",
-          "description": "the condition that results in the alert rule being activated."
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RuleAction"
-          },
-          "description": "the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved."
-        },
-        "lastUpdatedTime": {
-          "readOnly": true,
-          "type": "string",
-          "format": "date-time",
-          "description": "Last time the rule was updated in ISO8601 format."
-        }
-      },
-      "description": "An alert rule."
-    },
-    "Resource": {
-      "properties": {
-        "id": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Azure resource Id"
-        },
-        "name": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Azure resource name"
-        },
-        "type": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Azure resource type"
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location",
-          "x-ms-mutability": [
-            "create",
-            "read"
-          ]
-        },
-        "tags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Resource tags"
-        }
-      },
-      "required": [
-        "location"
-      ],
-      "x-ms-azure-resource": true,
-      "description": "An azure resource object"
-    },
-    "AlertRuleResource": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Resource"
-        }
-      ],
-      "required": [
-        "properties"
-      ],
-      "properties": {
-        "properties": {
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/AlertRule",
-          "description": "The alert rule properties of the resource."
-        }
-      },
-      "description": "The alert rule resource."
-    },
-    "AlertRuleResourcePatch": {
-      "description": "The alert rule object for patch operations.",
-      "properties": {
-        "tags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Resource tags"
-        },
-        "properties": {
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/AlertRule",
-          "description": "The properties of an alert rule."
-        }
-      }
-    },
-    "AlertRuleResourceCollection": {
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AlertRuleResource"
-          },
-          "description": "the values for the alert rule resources."
-        }
-      },
-      "description": "Represents a collection of alert rule resources."
-    },
-    "ErrorResponse": {
-      "description": "Describes the format of Error response.",
-      "type": "object",
-      "properties": {
-        "code": {
-          "description": "Error code",
-          "type": "string"
-        },
-        "message": {
-          "description": "Error message indicating why the operation failed.",
-          "type": "string"
-        }
-      }
-    }
-  },
-  "parameters": {
-    "SubscriptionIdParameter": {
-      "name": "subscriptionId",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "description": "The Azure subscription Id."
-    },
-    "ApiVersionParameter": {
-      "name": "api-version",
-      "in": "query",
-      "required": true,
-      "type": "string",
-      "description": "Client Api Version."
-    },
-    "ResourceGroupNameParameter": {
-      "name": "resourceGroupName",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "description": "The name of the resource group.",
-      "x-ms-parameter-location": "method"
-    },
-    "RuleNameParameter": {
-      "name": "ruleName",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "description": "The name of the rule.",
-      "x-ms-parameter-location": "method"
-    }
-  },
-  "x-internal-service-name": "Monitor",
-  "x-internal-toc-name": "Alert Rules",
-  "x-internal-split-type": "Operation",
-  "x-internal-operation-name": "CreateOrUpdate"
-}
+openapi: "3.0.0"
+info:
+  title: Innovation Portal REST API
+  description: |
+    REST API for the Innovation portal.
+
+    <b>Authentication</b>: please note that /login will redirect to the  the external SSO login that will be provided. The received token and (unmodified) user details will then be stored/updated in the DB. The token will be passed by the client/frontend in all subsequent requests. The user data (except for the points) will be refreshed each time the user logs in. 
+    
+    <b>Authorization</b>: authorization will be done by the app. Please check the 'Authorization:' comments in this specification.
+    
+    <b>Export</b>: the exporting of ideas will be performed by specifying the 'Accept' header in GET /ideas endpoint.
+    
+    <b>Resource representation</b>: please note, that the resources returned by the backend will be user specific (the user will be speficified by the passed token). For example, isLiked value of the Idea or Comment is user specific and should be determined by the backend.
+    
+    <b>User score and rank</b>: The backend should support the scoring and ranking of users. The points for each action should be added to the total user points in the respective methods/endpoints. The mapping between point amounts and actions should be configurable in backend. The default value are the following: 
+      
+      - 10 pts to every idea where submitter is creator or owner. 
+      - 1 pt for every comment a user provides. 
+      - 25 pts for every 5 ideas submitted by a user. 
+      - 10 pts to every idea submitter attached to an idea that's "approved.
+      
+    <b>References in POST/PUT:</b> please note that fully populated child/reference entities shouldn't be passed in POST and PUT requests, only the ids of the entities. For example, when creating Idea, only ids of the Areas and Users should be passed, but not the whole entities.   
+      
+    
+  version: "1.0"
+# the domain of the service, it will be updated in final deployment
+servers:
+  - url: /api/{apiVersion}/
+    variables:
+      apiVersion:
+        default: '1.0'
+        description: The REST API version
+security:
+  - bearerAuth: [] 
+
+paths:
+  /login:
+    post:
+      summary: Login
+      description: |
+        Login using username and password with external SSO. This is a mock that will be replaced by the team.
+      tags:
+        - Security
+      requestBody:
+        description: A login request
+        content:
+          application/json:
+            schema:
+              type: object
+              required: 
+                - email
+                - password
+              properties:
+                email:
+                  description: The email
+                  type: string
+                password:
+                  description: The password
+                  type: string
+      security: []    # no authentication
+      responses:
+        200:
+          description: |
+            Successfully authenticated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token: 
+                    description: The token
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+
+  /users:
+    get:
+      summary: Search Users.
+      description: |
+        Search Users. 
+      tags:
+        - User
+      parameters:
+        - name: keyword
+          in: query
+          description: The keyword. Searching should be performed for first and last name and email.
+          required: false
+          schema:
+            type:  string
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - name: sortBy
+          in: query
+          description: The sort order
+          required: false
+          schema:
+            type: string
+            enum: [name,createdOn,rank,points]
+        - $ref: '#/components/parameters/sortOrder'
+      responses:
+        200:
+          description: The operation succeeded. The search result will be returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  perPage:
+                    type: integer    
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+
+
+  /users/{id}:
+    parameters:  
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get the User.
+      description: |
+        Retrieve the User.
+      tags:
+        - User
+      responses:
+        200:
+          description: The user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'               
+                
+
+  /me: 
+    get:
+      summary: Get current User.
+      description: |
+        Retrieve the current User. The user will be identified by the token.
+      tags:
+        - User
+      responses:
+        200:
+          description: The operation succeeded. The entity will be returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'    
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+
+  /userLeaderboard:
+    get:
+      summary: Get user leaderboard. This endpoint returns the top X users list and your ranking list, where querying user is surrounded by 2 users (if any); the one that is before current user in the list and the one that's after. 
+      description: |
+        Get User leaderboard. 
+      tags:
+        - User
+      parameters:
+        - name: top
+          in: query
+          description: the number of top ranked users to be returned.
+          required: false
+          schema:
+            type: integer
+      responses:
+        200:
+          description: The operation succeeded. The leaderboard result will be returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  top:
+                    type: array
+                    items: 
+                      $ref: '#/components/schemas/User'
+                  yourRanking:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'   
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+ 
+  /ideas:
+    get:
+      summary: Search Ideas. 
+      description: |
+        Search Ideas. This endpoint will also be used for exporting by specifying the 'Accept' header.
+        
+        Top ideas are defined as ideas with the most amount of likes over the past 60 days.
+      tags:
+        - Idea
+      parameters:
+        - name: keyword
+          in: query
+          description: The keyword. Searching should be performed for idea name, description, problem to solve, etc.
+          required: false
+          schema:
+            type:  string
+        - name: status
+          in: query
+          description: the status
+          required: false
+          schema:
+            type: array
+            items: 
+              type: string
+              enum: [Open,InReview,Approved,InDevelopment,Complete,Archived,Deleted]
+        - name: areaIds
+          in: query
+          description: the Area ids
+          required: false
+          schema:
+            type: array
+            items: 
+              type: integer
+              format: int64
+        - name: userId
+          in: query
+          description: the id of the idea submitter or owner.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - name: sortBy
+          in: query
+          description: The sort order
+          required: false
+          schema:
+            type: string
+            enum: [name,top,mostDiscussed,createdOn]
+        - $ref: '#/components/parameters/sortOrder'
+        - $ref: '#/components/parameters/acceptHeader'
+      responses:
+        200:
+          description: OK - The operation succeeded. The search result will be returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Idea'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  perPage:
+                    type: integer  
+            application/xls:
+              schema:
+                type: string
+                format: binary  
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ 
+    post:
+      summary: Create Idea.
+      description: |
+        Create Idea. The idea thumbnail and attachments are passed in a single request. 
+      tags:
+        - Idea
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                idea:
+                  $ref: '#/components/schemas/Idea'
+                thumbnail:
+                  type: string
+                  format: binary
+                attachments:
+                  type: array 
+                  items: 
+                    type: string
+                    format: binary
+      responses:
+        200:
+          description: The Idea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Idea'                 
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        500:
+          $ref: '#/components/responses/InternalServerError'   
+ 
+
+  /ideas/{id}/:
+    parameters:  
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get the Idea by id.
+      description: |
+        Retrieve the Idea.
+      tags:
+        - Idea
+      responses:
+        200:
+          description: The Idea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Idea'
+        304:
+          $ref: '#/components/responses/NotModified'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'                             
+ 
+    put:
+      summary: Update Idea.
+      description: |
+        Update Idea. 
+
+        Authorization:  Only admin, idea submitter and idea owners are allowed to perform this action.
+      tags:
+        - Idea
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                idea:
+                  $ref: '#/components/schemas/Idea' 
+                thumbnail:
+                  type: string
+                  format: binary
+                attachments:
+                  type: array 
+                  items: 
+                    type: string
+                    format: binary
+      responses:
+        200:
+          description: The Idea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Idea'                 
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'    
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'   
+
+    patch:
+      summary: Perform partial update of the Idea entity. Only passed attributes will be updated.
+      description: |
+        Update Idea partially. 
+        
+        Authorization:  Only admin, idea submitter and idea owners are allowed to perform this action.
+      tags:
+        - Idea
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                idea:
+                  $ref: '#/components/schemas/Idea' 
+                thumbnail:
+                  type: string
+                  format: binary
+                attachments:
+                  type: array 
+                  items: 
+                    type: string
+                    format: binary
+      responses:
+        200:
+          description: The Idea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Idea'                 
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'    
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+        
+    delete:
+      summary: Delete the Idea.
+      description: |
+        Delete the Idea.
+        
+        Authorization:  Only admin, idea submitter and idea owners are allowed to perform this action.
+      tags:
+        - Idea
+      responses:
+        204:
+          description: OK - The operation succeeded.                
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'   
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound'  
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /ideas/{id}/like:
+    parameters:  
+      - $ref: '#/components/parameters/id'
+    put:
+      summary: Like the Idea.
+      description: |
+        Like the Comment.
+      tags:
+        - Idea
+      responses:
+        204:
+          description: OK - The operation succeeded.   
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+
+  /ideas/{id}/unlike:
+    parameters:  
+      - $ref: '#/components/parameters/id'
+    put:
+      summary: Unlike the Comment.
+      description: |
+        Unlike the Comment.
+      tags:
+        - Idea
+      responses:
+        204:
+          description: OK - The operation succeeded.   
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+
+  /ideas/{id}/comments:
+    parameters:  
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get Idea coments.
+      description: |
+        Get Idea comments. 
+      tags:
+        - Idea
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - name: sortBy
+          in: query
+          description: The sort order
+          required: false
+          schema:
+            type: string
+            enum: [mostLiked,createdOn]
+        - $ref: '#/components/parameters/sortOrder'
+      responses:
+        200:
+          description: OK - The operation succeeded. The search result will be returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  perPage:
+                    type: integer    
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ 
+    post:
+      summary: Create Idea comment.
+      description: |
+        Create Idea comment. Only Commment.text property is required. Comment.createdBy.id is identified by backend from token.
+      tags:
+        - Idea
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'      
+      responses:
+        200:
+          description: The Comment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'                 
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        500:
+          $ref: '#/components/responses/InternalServerError'    
+
+
+  /comments/{commentId}:
+    parameters:  
+      - $ref: '#/components/parameters/commentId'
+    get:
+      summary: Get the Comment by id.
+      description: |
+        Retrieve the Comment.
+      tags:
+        - Idea
+      responses:
+        200:
+          description: The Comment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        304:
+          $ref: '#/components/responses/NotModified'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'                             
+  
+
+    patch:
+      summary: Perform partial update of the Comment entity. Only comment text is allowed to be updated.
+      description: |
+        Update Comment partially.  
+        
+        Authorization: Only comment creator is allowed to perform this action. 
+      tags:
+        - Idea
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment' 
+      responses:
+        200:
+          description: The Comment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'                 
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'    
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+ 
+
+  /comments/{commentId}/like:
+    parameters:  
+      - $ref: '#/components/parameters/commentId'
+    put:
+      summary: Like the Comment.
+      description: |
+        Like the Comment.
+      tags:
+        - Idea
+      responses:
+        204:
+          description: OK - The operation succeeded.   
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+
+  /comments/{commentId}/unlike:
+    parameters:  
+      - $ref: '#/components/parameters/commentId'
+    put:
+      summary: Unlike the Comment.
+      description: |
+        Unlike the Comment.
+      tags:
+        - Idea
+      responses:
+        204:
+          description: OK - The operation succeeded.   
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+
+  /notifications:
+    get:
+      summary: Get user's notifications.
+      description: |
+        Get user's notifications. The current user will be identified by token.
+      tags:
+        - Notification
+      parameters:           
+        - name: status
+          in: query
+          description: The status
+          required: false
+          schema:
+            type: string
+            enum: [New,Read]
+        - name: startDate
+          in: query
+          description: The start date
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: The start date
+          required: false
+          schema:
+            type: string
+            format: date
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+
+      responses:
+        200:
+          description: The search result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Notification'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  perPage:
+                    type: integer                  
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+   
+  /notifications/{id}:
+    get:
+      summary: Get Notification.
+      description: |
+        Get Notification.
+        
+        Authorization: Only owner of this notification (userId == notification.userId) can perform this action. 
+      tags:
+        - Notification
+      parameters:  
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: The Notification.
+          content:
+            application/json:
+              schema:                
+                $ref: '#/components/schemas/Notification'                
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'        
+
+  /notifications/{id}/read:
+    put:
+      summary: Mark user's notification as read.
+      description: |
+        Mark user's notification as read.
+        
+        Authorization: Only owner of this notification (userId == notification.userId) can perform this action. 
+      tags:
+        - Notification
+      parameters:  
+        - $ref: '#/components/parameters/id'
+      responses:
+        204:
+          description: OK - The operation succeeded.            
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'         
+
+  /markAllNotificationsAsRead:
+    put:
+      summary: Mark all user's notification as read.
+      description: |
+        Mark all user's notification as read.
+      tags:
+        - Notification
+      responses:
+        204:
+          description: OK - The operation succeeded.            
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+
+  /areas:
+    get:
+      summary: Get all Areas. 
+      description: |
+        Get all Areas
+      tags:
+        - Area
+      responses:
+        200:
+          description: OK - The operation succeeded. The search result will be returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Area' 
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ 
+    post:
+      summary: Create Area.
+      description: |
+        Create Area. The area icon be passed in request.
+        
+        Authorization: Only admins can perform this action. 
+      tags:
+        - Area
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                idea:
+                  $ref: '#/components/schemas/Area' 
+                icon:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: The Area.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'                 
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        500:
+          $ref: '#/components/responses/InternalServerError'   
+ 
+
+  /areas/{id}/:
+    parameters:  
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get the Area by id.
+      description: |
+        Retrieve the Area.
+      tags:
+        - Area
+      responses:
+        200:
+          description: The Area.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'
+        304:
+          $ref: '#/components/responses/NotModified'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/NotAuthorized' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'                             
+ 
+    put:
+      summary: Update Area.
+      description: |
+        Update Area. 
+        
+        Authorization: Only admins can perform this action. 
+      tags:
+        - Area
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                idea:
+                  $ref: '#/components/schemas/Area' 
+                icon:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: The Area.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'                 
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'    
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'   
+
+    patch:
+      summary: Perform partial update of the Area entity. Only passed attributes will be updated.
+      
+      description: |
+        Update Area partially.  
+        
+        Authorization: Only admins can perform this action. 
+      tags:
+        - Area
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                idea:
+                  $ref: '#/components/schemas/Area' 
+                icon:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: The Area.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'                 
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'    
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound' 
+        500:
+          $ref: '#/components/responses/InternalServerError'  
+        
+    delete:
+      summary: Delete the Area.
+      description: |
+        Delete the Area.
+        
+        Authorization: Only admins can perform this action. 
+      tags:
+        - Area
+      responses:
+        204:
+          description: OK - The operation succeeded.                
+        400:
+          $ref: '#/components/responses/BadRequest' 
+        401:
+          $ref: '#/components/responses/NotAuthorized'   
+        403:
+          $ref: '#/components/responses/Forbidden' 
+        404:
+          $ref: '#/components/responses/NotFound'  
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    
+  /globalStatistics:
+    get:
+      summary: Get Global Statistics.
+      description: |
+        Get Global Statistics.
+      tags:
+        - Statistics
+      responses:
+        200:
+          description: The results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalStatistics'                 
+        401:
+          $ref: '#/components/responses/NotAuthorized'  
+        500:
+          $ref: '#/components/responses/InternalServerError' 
+
+components:
+  #-------------------------------
+  # Security schemes
+  #-------------------------------
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  #-------------------------------
+  # Parameters
+  #-------------------------------
+  parameters:
+    page:
+      name: page
+      in: query
+      description: The page number.
+      required: false
+      schema:
+        type: integer
+        default: 1
+      example: 1
+
+    perPage:
+      name: perPage
+      in: query
+      description: The number of items to list per page.
+      required: false
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+      example: 20
+
+    sortOrder:
+      name: sortOrder
+      in: query
+      description: The sort order.
+      required: false
+      schema:
+        type: string
+        enum: [asc, desc]
+        default: desc
+      example: asc
+
+    id:
+      name: id
+      in: path
+      description: The entity id.
+      required: true
+      schema:
+        type: integer
+        format: int64
+      example: 2027
+
+    commentId:
+      name: commentId
+      in: path
+      description: The comment entity id.
+      required: true
+      schema:
+        type: integer
+        format: int64
+      example: 2027
+      
+    acceptHeader:   
+      name: Accept
+      in: header
+      description: The accept header. This will be used for exporting.
+      required: false
+      schema:  
+        type: string
+        enum: [application/json,application/xls]
+        default: application/json
+
+  #-------------------------------
+  # Responses
+  #-------------------------------
+  responses:
+    NotModified:
+      description: NOT MODIFIED - if the resource wasn't modified (for conditional request with If-Modified-Since header).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: BAD REQUEST - if there was problem with the request (e.g. malformed or some parameters are missing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotAuthorized:
+      description: NOT AUTHORIZED - if the request didn't bear authentication information or the authentication information is invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: FORBIDDEN - if the requesting user didn't have permission to perform the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: NOT FOUND - if the resource in request did not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error' 
+    InternalServerError:
+      description: INTERNAL SERVER ERROR - if the request was properly formatted, but the operation failed on the server side
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  #-------------------------------
+  # Entities
+  #-------------------------------
+  schemas:    
+    Error:
+      description: |
+        An error entity. 
+      properties:
+        message:
+          type: string
+          description: The error message.                
+
+    Idea:
+      description: |
+        The idea. 
+      required:
+        - name
+        - description
+        - problemToSolve
+        - impactAreas
+        - submitters
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the entity.
+        name:
+          type: string
+          description: The name.
+        description:
+          type: string
+          description: The idea description.
+        problemToSolve:
+          type: string
+          description: What problem the idea solves.
+        status:
+          type: string
+          description: The status.
+          enum: [Open,InReview,Approved,InDevelopment,Complete,Archived,Deleted]
+        impactAreas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Area' 
+          description: The impact areas. 
+        thumbnailURL:
+          type: string
+          description: The thumbnail URL.
+        submitters:
+          type: array
+          items:
+            $ref: '#/components/schemas/User' 
+          description: The submitters. 
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/User' 
+          description: The owners.  
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/File' 
+          description: The attachments. 
+        numberOfLikes:
+          type: integer
+          description: The number of likes. 
+        numberOfComments:
+          type: integer
+          description: The number of comments.
+        isLiked:
+          type: boolean
+          description: The flag indicating if the idea is liked by the current user.
+        createdOn:
+          type: string
+          format: date
+          description: The created on date.   
+        updatedOn:
+          type: string
+          format: date
+          description: The updated on date.   
+      example:
+        name: Improving customer experience by using reward system mobile app
+        description: The idea will allow to impreve customer experience by...
+        problemToSolve: The idea will help to solve the problem o ...
+        status: Active
+        owners:
+            [$ref: "#/components/schemas/User/example"]
+        numberOfLikes: 420
+        numnerOfComments: 5
+
+    Comment:
+      description: |
+        The Comment entity. 
+      required:
+        - text
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the entity.
+        ideaId:
+          type: integer
+          format: int64
+          description: The ID of the idea.
+        text:
+          type: string
+          description: The comment text.
+        createdBy:
+          $ref: '#/components/schemas/User' 
+        parentCommentId:
+          type: integer
+          format: int64
+          description: The ID of the parent comment entity.
+        childComments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment' 
+          description: The child (reply) comments. 
+        numberOfLikes:
+          type: integer
+          description: The number of likes. 
+        isLiked:
+          type: boolean
+          description: The flag indicating if the comment is liked by the current user.
+        createdOn:
+          type: string
+          format: date
+          description: The created on date.   
+        updatedOn:
+          type: string
+          format: date
+          description: The updated on date. 
+      example:
+        text: Awesome!
+        isLiked: false
+        createdBy:
+          $ref: "#/components/schemas/User/example"
+        numberOfLikes: 5
+
+
+    Area:
+      description: |
+        The Area entity. 
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the entity.
+        name:
+          type: string
+          description: The name.  
+        iconURL:
+          type: string
+          description: The icon URL.  
+
+    File:
+      description: |
+        The file.
+      required:
+        - name
+        - fileURL
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the entity.
+        name:
+          type: string
+          description: The name.
+        mimeType:
+          type: string
+          description: The MIME type.
+        fileURL:
+          type: string
+          description: The file URL.  
+
+    User:
+      description: |
+        The User entity. pointsAndRank are only obtained in GET endpoints and should be ignored in PUT requests. 
+      required:
+        - firstName
+        - lastName
+        - email
+        - phone
+        - role
+        - status
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the entity.
+        firstName:
+          type: string
+          description: The first name.
+        lastName:
+          type: string
+          description: The last name.
+        email:
+          type: string
+          description: The email.
+        phone:
+          type: string
+          description: The personal phone.  
+        location:
+          type: string
+          description: The location. 
+        position:
+          type: string
+          description: The position.  
+        profilePictureURL:
+          type: string
+          description: The profile picture URL. 
+        pointsAndRank:
+          $ref: '#/components/schemas/PointsAndRank' 
+        role:
+          type: string
+          description: The role. 
+          enum: [Admin, User]
+          default: User
+        status:
+          type: string
+          description: The status. 
+          enum: [Active,Inactive]
+        createdOn:
+          type: string
+          format: date
+          description: The created on date.   
+        updatedOn:
+          type: string
+          format: date
+          description: The updated on date. 
+      example:
+        firstName: Mark
+        lastName: Leary
+        email: mleary@gmail.com
+        location: San Francisco, California
+        pointsAndRank:
+          points: 1250
+          rank: 33 
+             
+
+    PointsAndRank:
+      description: |
+        The points and rank. It should be stored in a separate table and should be updated by various user actions like creation of idea or comment. 
+      required:
+        - points
+        - rank
+      properties:
+        points:
+          type: integer
+          description: The amount of points. Non-negative number.
+        rank:
+          type: integer
+          description: The rank/position. Positive number. 
+
+    GlobalStatistics:
+      description: |
+        The global statistics.
+      required:
+        - numberOfIdeasSubmitted
+        - numberOfIdeasApproved
+        - numberOfIdeasImplemented
+      properties:
+        numberOfIdeasSubmitted:
+          type: integer
+          description: The number of ideas submitted.
+        numberOfIdeasApproved:
+          type: integer
+          description: The number of ideas approved.
+        numberOfIdeasImplemented:
+          type: integer
+          description: The number of ideas implemented.
+
+    Notification:
+      description: |
+        The notification.
+      required:
+        - id
+        - userId
+        - title
+        - text
+        - status
+        - createdOn
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the entity.
+        userId:
+          type: integer
+          format: int64
+          description: The ID of the user.
+        title:
+          type: string
+          description: The notification title. 
+          example: New poll available 
+        text:
+          type: string
+          description: The notification text.
+        relatedModel:
+          type: string
+          enum: [Idea,Comment]
+          description: The related model.
+          example: Idea    
+        relatedModelId:
+          type: integer
+          format: int64
+          description: The IDs of the related model.  
+        status:
+          type: string
+          description: The notification status.
+          enum: [New,Read]
+        createdOn:
+          type: string
+          format: date
+          description: The created on date.   
+        readOn:
+          type: string
+          format: date
+          description: The read on date.    
+
+
+
+
