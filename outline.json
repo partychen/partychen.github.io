@@ -1,7 +1,16 @@
 {
-  "host": "3.89.5.51",
-  "method": "chacha20-ietf-poly1305",
-  "name": "nthLink Server",
-  "password": "vM1pOIFyyJUt",
-  "port": 3598
+  "servers": [
+    {
+      "host": "3.89.5.51",
+      "method": "chacha20-ietf-poly1305",
+      "name": "nthLink Server",
+      "password": "vM1pOIFyyJUt",
+      "port": 3598
+    }
+  ],
+  "redirections": {
+    "en": "https://www.voanews.com",
+    "zh-CN": "https://www.google.com",
+    "fa": "https://www.baidu.com"
+  }
 }
